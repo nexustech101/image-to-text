@@ -1,0 +1,8 @@
+# virtual envirement
+/venv
+
+# Runtime files
+__pycache__
+
+# vscode envirement
+.vscode
