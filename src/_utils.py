@@ -22,18 +22,19 @@ from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import letter
 from reportlab.lib import utils
 from typing import Callable
+from pathlib import Path
 import pytesseract
 import pyperclip
 import pyautogui
 import threading
+import logging
 import time
 import fitz
 import os
-import logging
 
 # Set up logging
 logging.basicConfig(
-    filename='text_extraction.log',
+    filename=Path.cwd() / r'image_to_text.log',
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s'
 )
@@ -44,6 +45,9 @@ TESSERACT_PATHS = {
     'linux': '/usr/bin/tesseract',
     'darwin': '/usr/local/bin/tesseract'
 }
+
+IMAGE_FILE_PATH = Path.cwd() / r'assets' / r'screenshot.png' 
+EXTRACTED_TEXT_FILE_PATH = Path.cwd() / r'assets' / r'extracted_text.txt'
 
 pytesseract.pytesseract.tesseract_cmd = TESSERACT_PATHS.get(os.name, 'tesseract')
 
@@ -109,8 +113,7 @@ class ImageProcessing:
             text = pytesseract.image_to_string(img)
             return text
         except Exception as e:
-            logging.error(
-                f"Failed to extract text from image: {image_path}. Error: {e}")
+            logging.error(f"Failed to extract text from image: {image_path}. Error: {e}")
             return ""
 
 
@@ -142,7 +145,9 @@ class Extract:
         return ImageProcessing.extract(file_path)
 
 
-def save_to_txt(text: str, output_filename: str = 'extracted_text.txt') -> None:
+def save_to_txt(
+    text: str, output_filename: str = EXTRACTED_TEXT_FILE_PATH
+) -> None:
     """
     Save the extracted text to a file.
 
@@ -175,7 +180,7 @@ def save_to_clipboard(text: str) -> None:
 
 
 def capture_screenshot(
-    left: int, top: int, width: int, height: int, output_filename: str = './assets/screenshot.png'
+    left: int, top: int, width: int, height: int, output_filename: str = IMAGE_FILE_PATH
 ) -> None:
     """
     Captures a screenshot of the specified bounding box and saves it as an image.
