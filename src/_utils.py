@@ -84,13 +84,11 @@ class PDFProcessing:
 
             if filter:
                 lines = text.splitlines()
-                filtered_text = "\n".join(
-                    line for line in lines if len(line) > 20)
+                filtered_text = "\n".join(line for line in lines if len(line) > 20)
                 return filtered_text
             return text
         except Exception as e:
-            logging.error(
-                f"Failed to extract text from PDF: {pdf_path}. Error: {e}")
+            logging.error(f"Failed to extract text from PDF: {pdf_path}. Error: {e}")
             return ""
 
 
@@ -205,7 +203,9 @@ def capture_screenshot(
         logging.error(f"Error capturing screenshot: {e}")
 
 
-def on_click(x: int, y: int, button, pressed: bool) -> None:
+def on_click(
+    x: int, y: int, button: object, pressed: bool
+) -> None:
     """
     Handles mouse click events for defining the screenshot region.
 
