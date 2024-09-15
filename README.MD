@@ -57,8 +57,8 @@ By leveraging libraries such as `pytesseract`, `pyautogui`, and `PyMuPDF`, this 
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/yourusername/screenshot-text-extractor.git
-   cd screenshot-text-extractor
+   git clone https://github.com/nexustech101/image-to-text.git
+   cd image-to-text
    ```
 
 2. **Set Up a Virtual Environment** (recommended):
@@ -100,7 +100,7 @@ By leveraging libraries such as `pytesseract`, `pyautogui`, and `PyMuPDF`, this 
 
 1. **Start the Script**:
    ```bash
-   python screenshot_text_extractor.py
+   python app.py
    ```
 
 2. **Capture a Screenshot**:
@@ -161,17 +161,9 @@ By leveraging libraries such as `pytesseract`, `pyautogui`, and `PyMuPDF`, this 
   - Check for conflicts with other applications
   - Ensure proper permissions for global hotkey registration
 
-## Author
-
-Charles III
-
-## Date
-
-September 14, 2024
-
 ## License
 
-[Specify your chosen license here, e.g., MIT License, GNU GPL v3, etc.]
+MIT License
 
 ## Contributing
 
@@ -192,6 +184,5 @@ For support, please:
 
 1. Check the [GitHub Issues](https://github.com/yourusername/screenshot-text-extractor/issues) for existing problems or solutions
 2. Open a new issue if you encounter a bug or have a feature request
-3. For urgent matters, contact the maintainer directly at [your-email@example.com]
 
 We appreciate your feedback and contributions to making Screenshot Text Extractor better!
