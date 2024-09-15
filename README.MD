@@ -185,4 +185,4 @@ For support, please:
 1. Check the [GitHub Issues](https://github.com/yourusername/screenshot-text-extractor/issues) for existing problems or solutions
 2. Open a new issue if you encounter a bug or have a feature request
 
-We appreciate your feedback and contributions to making Screenshot Text Extractor better!
+We appreciate your feedback and contributions to making Image-To-Text better!
