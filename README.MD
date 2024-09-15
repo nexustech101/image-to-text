@@ -1,8 +1,8 @@
-# Screenshot Text Extractor
+# image To Text
 
 ## Description
 
-Screenshot Text Extractor is a versatile Python script designed to streamline the process of capturing screenshots and extracting text from various file types. This tool combines the power of optical character recognition (OCR) with intuitive user controls, making it an invaluable asset for data entry, research, and document processing tasks.
+Image-To-Text is a versatile Python script designed to streamline the process of capturing screenshots and extracting text from various file types. This tool combines the power of optical character recognition (OCR) with intuitive user controls, making it an invaluable asset for data entry, research, and document processing tasks.
 
 Key capabilities include:
 - Hotkey-activated screenshot capture
