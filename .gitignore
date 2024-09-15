@@ -1,13 +1,16 @@
 # virtual envirement
 /venv
 
+# Assets and testing documents
+/test
+
 # Runtime files
 __pycache__
-
-# vscode envirement
-.vscode
+/__pycache__
 
 # Static files
+*.log
+*.pdf
 *.png
 *.jpg
 *.webp
