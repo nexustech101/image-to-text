@@ -9,7 +9,7 @@ __pycache__
 /__pycache__
 
 # Static files
-/test_extraction.log
+test_extraction.log
 /*.log
 *.pdf
 *.png
