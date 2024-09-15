@@ -195,11 +195,7 @@ def capture_screenshot(
 
         text = Extract.extract(output_filename)
         save_to_clipboard(text)
-
-        if text:
-            logging.info(f"Extracted text:\n{text}\n")
-        else:
-            logging.info("No text extracted from screenshot.")
+        logging.info(f"Text saved to clipboard")
     except Exception as e:
         logging.error(f"Error capturing screenshot: {e}")
 
@@ -221,10 +217,8 @@ def on_click(x: int, y: int, button, pressed: bool) -> None:
 
     if pressed and button == mouse.Button.left:
         start_pos = (x, y)
-        logging.info(f"Mouse pressed at {start_pos}")
     elif not pressed and button == mouse.Button.left:
         end_pos = (x, y)
-        logging.info(f"Mouse released at {end_pos}")
 
         if start_pos and end_pos:
             left, top = min(start_pos[0], end_pos[0]), min(start_pos[1], end_pos[1])
