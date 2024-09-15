@@ -18,19 +18,19 @@ Date:
 
 from PIL import Image
 from pynput import mouse, keyboard
-from reportlab.pdfgen import canvas
+from reportlab.pdfgen import canvas  # This module helps construct pdfs with textual data
 from reportlab.lib.pagesizes import letter
 from reportlab.lib import utils
 from typing import Callable
-from pathlib import Path
+from pathlib import Path  # Cross platform support and better readablility
 import pytesseract
 import pyperclip
 import pyautogui
-import threading
+import threading  # multi-threading for asynchronous event listening
 import logging
 import time
 import fitz
-import os
+import os  # Get the os name for conditional tesseract config
 
 # Set up logging
 logging.basicConfig(
@@ -45,13 +45,11 @@ TESSERACT_PATHS = {
     'linux': '/usr/bin/tesseract',
     'darwin': '/usr/local/bin/tesseract'
 }
+pytesseract.pytesseract.tesseract_cmd = TESSERACT_PATHS.get(os.name, 'tesseract')
 
 IMAGE_FILE_PATH = Path.cwd() / r'assets' / r'screenshot.png' 
 EXTRACTED_TEXT_FILE_PATH = Path.cwd() / r'assets' / r'extracted_text.txt'
-
-pytesseract.pytesseract.tesseract_cmd = TESSERACT_PATHS.get(os.name, 'tesseract')
-
-VALID_EXTENSIONS = ["pdf", "jpg", "png", "jpeg", "tiff", "bmp"]
+VALID_FILE_EXTENTIONS = ["pdf", "jpg", "png", "jpeg", "tiff", "bmp"]
 
 # Global variables for capturing positions and controlling screenshot
 start_pos = None
@@ -134,7 +132,7 @@ class Extract:
         """
         file_extension = file_path.split('.')[-1].lower()
 
-        if file_extension not in VALID_EXTENSIONS:
+        if file_extension not in VALID_FILE_EXTENTIONS:
             logging.warning(f"Unsupported file type: {file_extension}")
             raise ValueError(f"Unsupported file type: {file_extension}")
 
@@ -252,8 +250,7 @@ def listen_for_hotkey() -> None:
     """Starts the hotkey listener to activate the screenshot macro."""
     with keyboard.GlobalHotKeys({
         '<ctrl>+<shift>+<alt>+s': on_activate,
-    }) as h:
-        h.join()
+    }) as h: h.join()
 
 
 def main() -> None:
