@@ -1,10 +1,11 @@
 # virtual envirement
 /venv
 
-# Assets and testing documents
+# Assets and testing
 /test
 
 # Runtime files
+.vscode
 __pycache__
 /__pycache__
 

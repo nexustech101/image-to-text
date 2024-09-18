@@ -6,7 +6,7 @@ Usage:
 
 1. Install the required dependencies.
 2. Configure Tesseract executable path.
-3. Run the script to listen for a hotkey (`Ctrl + Shift + Alt + S`), click and drag to capture a screenshot, and extract text from the captured region or files.
+3. Run the script to listen for a hotkey (`Ctrl + Shift + Alt + S`), click and drag to capture \ screenshot, and extract text from the captured region or files.
 
 Author:
 Charles III
@@ -15,23 +15,21 @@ Date:
 09-14-2024
 
 """
-
-from PIL import Image
-from pynput import mouse, keyboard
-from reportlab.pdfgen import canvas  # This module helps construct pdfs with textual data
 from reportlab.lib.pagesizes import letter
-from reportlab.lib import utils
+from reportlab.pdfgen import canvas  # This module helps construct pdfs with textual data
+from pynput import mouse, keyboard
 from typing import Callable, Union
-from pathlib import Path  # Cross platform support and better readablility
-import pytesseract
-import pyperclip
-import pyautogui
+from reportlab.lib import utils
+from PIL import Image
+from pathlib import Path  # Cross platform support and better path handlng
+import pytesseract  # Module for handling text extracion from an image
+import pyperclip  # Module for handling clipboard data
+import pyautogui  # Module for handling keyboard input data
 import threading  # multi-threading for asynchronous event listening
 import logging
 import time
 import fitz
-import os  # Get the os name for conditional tesseract config
-
+import os
 
 # Set up logging
 logging.basicConfig(
@@ -42,6 +40,7 @@ logging.basicConfig(
 
 # Set the path to the Tesseract executable (cross-platform support)
 TESSERACT_PATHS = {
+    """Modify these paths as needed"""
     'win32': r'C:\Program Files\Tesseract-OCR\tesseract.exe',
     'linux': '/usr/bin/tesseract',
     'darwin': '/usr/local/bin/tesseract'
@@ -59,7 +58,7 @@ screenshot_taken = False
 macro_triggered = False
 
 
-class PDFProcessing:
+class PDFProcessing(object):
     """Handles text extraction from PDF files using PyMuPDF."""
 
     @staticmethod
@@ -91,7 +90,7 @@ class PDFProcessing:
             return ""
 
 
-class ImageProcessing:
+class ImageProcessing(object):
     """Handles text extraction from image files using Tesseract."""
 
     @staticmethod
@@ -137,18 +136,32 @@ class Extract:
             logging.warning(f"Unsupported file type: {file_extension}")
             raise ValueError(f"Unsupported file type: {file_extension}")
 
+        # Verbose error handling because a few things could go wrong
         if file_extension == "pdf":
-            print("Text extracted successfully")
-            logging.info(f"Text saved to clipboard")
-            return PDFProcessing.extract(file_path)
+            extracted_text = PDFProcessing.extract(file_path)
+            if extracted_text:
+                logging.info(f"Text saved to clipboard")
+                print("Text extracted successfully")
+                return extracted_text
+            else:
+                logging.error(f"Error extracting text")
+                print("Text extraction unsuccessful")
+                return ""
         elif file_extension in VALID_FILE_EXTENTIONS:
-            print("Text extraction successful")
-            logging.info(f"Text saved to clipboard")
-            return ImageProcessing.extract(file_path)
+            extracted_text = ImageProcessing.extract(file_path)
+            if extracted_text:
+                logging.info(f"Text saved to clipboard")
+                print("Text extraction successful")
+                return extracted_text
+            else:
+                logging.error(f"Error extracting text")
+                print("Text extraction unsuccessful")
+                return ""
         else:
             print("Text extraction unsuccessful")
-            logging.info(f"Text saved to clipboard")
-            return None
+            logging.info(f"Error extracting text")
+            return ""
+
 
 def save_to_txt(
     text: str, output_filename: str = EXTRACTED_TEXT_FILE_PATH

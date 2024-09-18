@@ -10,3 +10,19 @@
 2024-09-17 22:37:55,110 - INFO - Macro activated. Click and drag to capture a screenshot.
 2024-09-17 22:37:56,672 - INFO - Screenshot saved to C:\Users\user\OneDrive\Documents\Python\Flask Apps\image-to-text\assets\screenshot.png
 2024-09-17 22:37:56,672 - ERROR - Error capturing screenshot: 'WindowsPath' object has no attribute 'split'
+2024-09-17 22:43:30,115 - INFO - Listening for macro. Press 'Ctrl + Shift + Alt + S' to take a screenshot.
+2024-09-17 22:43:41,507 - INFO - Macro activated. Click and drag to capture a screenshot.
+2024-09-17 22:43:50,048 - INFO - Screenshot saved to C:\Users\user\OneDrive\Documents\Python\Flask Apps\image-to-text\assets\screenshot.png
+2024-09-17 22:43:50,048 - INFO - Text saved to clipboard
+2024-09-17 22:43:51,233 - INFO - Text copied to clipboard.
+2024-09-17 22:43:51,233 - INFO - Text saved to clipboard
+2024-09-17 23:02:29,732 - INFO - Macro activated. Click and drag to capture a screenshot.
+2024-09-17 23:02:34,314 - INFO - Screenshot saved to C:\Users\user\OneDrive\Documents\Python\Flask Apps\image-to-text\assets\screenshot.png
+2024-09-17 23:02:34,315 - INFO - Text saved to clipboard
+2024-09-17 23:02:35,074 - INFO - Text copied to clipboard.
+2024-09-17 23:02:35,074 - INFO - Text saved to clipboard
+2024-09-17 23:02:46,367 - INFO - Macro activated. Click and drag to capture a screenshot.
+2024-09-17 23:02:49,133 - INFO - Screenshot saved to C:\Users\user\OneDrive\Documents\Python\Flask Apps\image-to-text\assets\screenshot.png
+2024-09-17 23:02:49,133 - INFO - Text saved to clipboard
+2024-09-17 23:02:49,555 - INFO - Text copied to clipboard.
+2024-09-17 23:02:49,555 - INFO - Text saved to clipboard
