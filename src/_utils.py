@@ -58,7 +58,7 @@ screenshot_taken = False
 macro_triggered = False
 
 
-class PDFProcessing(object):
+class PDFProcessing:
     """Handles text extraction from PDF files using PyMuPDF."""
 
     @staticmethod
@@ -90,7 +90,7 @@ class PDFProcessing(object):
             return ""
 
 
-class ImageProcessing(object):
+class ImageProcessing:
     """Handles text extraction from image files using Tesseract."""
 
     @staticmethod
@@ -117,7 +117,7 @@ class Extract:
     """Determines the type of file (PDF or image) and extracts text accordingly."""
 
     @staticmethod
-    def extract(file_path: str) -> Union[str, None]:
+    def extract(file_path: str) -> str:
         """
         Extracts text from the given file based on its type (PDF or image).
 
@@ -141,7 +141,7 @@ class Extract:
             extracted_text = PDFProcessing.extract(file_path)
             if extracted_text:
                 logging.info(f"Text saved to clipboard")
-                print("Text extracted successfully")
+                print("Text extraction successful")
                 return extracted_text
             else:
                 logging.error(f"Error extracting text")
