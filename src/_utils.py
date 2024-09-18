@@ -210,7 +210,7 @@ def capture_screenshot(
             save_to_clipboard(text)
             logging.info(f"Text saved to clipboard")
         else:
-            print("Text not saved to clipboard")
+            logging.error(f"No text extracted from {output_filename}")
     except Exception as e:
         logging.error(f"Error capturing screenshot: {e}")
 
