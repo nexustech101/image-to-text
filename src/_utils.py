@@ -199,8 +199,8 @@ def capture_screenshot(
     """
     os.makedirs(os.path.dirname(output_filename), exist_ok=True)
     try:
-        # Path obect is not a str, so be sure to convert back to a str
-        file_path = str(output_filename)
+        # Be sure to convert Path object to a str
+        output_filename = str(output_filename)
         screenshot = pyautogui.screenshot(region=(left, top, width, height))
         screenshot.save(output_filename)
         logging.info(f"Screenshot saved to {output_filename}")
