@@ -183,7 +183,7 @@ def save_to_txt(
         logging.warning("No text to save to file.")
 
 
-def save_to_clipboard(text: str) -> int:
+def save_to_clipboard(text: str) -> None:
     """
     Copies the extracted text to the system clipboard.
 
