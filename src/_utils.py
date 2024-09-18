@@ -32,6 +32,7 @@ import time
 import fitz
 import os  # Get the os name for conditional tesseract config
 
+
 # Set up logging
 logging.basicConfig(
     filename=Path.cwd() / r'image_to_text.log',
@@ -137,8 +138,15 @@ class Extract:
             raise ValueError(f"Unsupported file type: {file_extension}")
 
         if file_extension == "pdf":
+            print("Text extracted successfully")
+            logging.info(f"Text saved to clipboard")
             return PDFProcessing.extract(file_path)
-        return ImageProcessing.extract(file_path)
+        else:
+            print("Text extracted successfully")
+            logging.info(f"Text saved to clipboard")
+            return ImageProcessing.extract(file_path)
+        
+        
 
 
 def save_to_txt(
@@ -195,8 +203,11 @@ def capture_screenshot(
         logging.info(f"Screenshot saved to {output_filename}")
 
         text = Extract.extract(output_filename)
-        save_to_clipboard(text)
-        logging.info(f"Text saved to clipboard")
+        if text:
+            save_to_clipboard(text)
+            logging.info(f"Text saved to clipboard")
+        else:
+            print("Text not saved to clipboard")
     except Exception as e:
         logging.error(f"Error capturing screenshot: {e}")
 
