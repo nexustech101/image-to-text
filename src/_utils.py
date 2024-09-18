@@ -21,7 +21,7 @@ from pynput import mouse, keyboard
 from reportlab.pdfgen import canvas  # This module helps construct pdfs with textual data
 from reportlab.lib.pagesizes import letter
 from reportlab.lib import utils
-from typing import Callable
+from typing import Callable, Union
 from pathlib import Path  # Cross platform support and better readablility
 import pytesseract
 import pyperclip
@@ -118,7 +118,7 @@ class Extract:
     """Determines the type of file (PDF or image) and extracts text accordingly."""
 
     @staticmethod
-    def extract(file_path: str) -> str:
+    def extract(file_path: str) -> Union[str, None]:
         """
         Extracts text from the given file based on its type (PDF or image).
 
@@ -141,13 +141,14 @@ class Extract:
             print("Text extracted successfully")
             logging.info(f"Text saved to clipboard")
             return PDFProcessing.extract(file_path)
-        else:
-            print("Text extracted successfully")
+        elif file_extension in VALID_FILE_EXTENTIONS:
+            print("Text extraction successful")
             logging.info(f"Text saved to clipboard")
             return ImageProcessing.extract(file_path)
-        
-        
-
+        else:
+            print("Text extraction unsuccessful")
+            logging.info(f"Text saved to clipboard")
+            return None
 
 def save_to_txt(
     text: str, output_filename: str = EXTRACTED_TEXT_FILE_PATH
@@ -169,7 +170,7 @@ def save_to_txt(
         logging.warning("No text to save to file.")
 
 
-def save_to_clipboard(text: str) -> None:
+def save_to_clipboard(text: str) -> int:
     """
     Copies the extracted text to the system clipboard.
 
@@ -198,6 +199,8 @@ def capture_screenshot(
     """
     os.makedirs(os.path.dirname(output_filename), exist_ok=True)
     try:
+        # Path obect is not a str, so be sure to convert back to a str
+        file_path = str(output_filename)
         screenshot = pyautogui.screenshot(region=(left, top, width, height))
         screenshot.save(output_filename)
         logging.info(f"Screenshot saved to {output_filename}")
