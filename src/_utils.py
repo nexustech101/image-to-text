@@ -287,7 +287,3 @@ def main() -> None:
 
     logging.info("Listening for macro. Press 'Ctrl + Shift + Alt + S' to take a screenshot.")
     start_mouse_listener()
-
-
-if __name__ == "__main__":
-    main()

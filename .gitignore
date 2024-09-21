@@ -3,6 +3,8 @@
 
 # Assets and testing
 /test
+/windows
+meassage_gui.py
 
 # Runtime files
 .vscode
