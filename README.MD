@@ -165,6 +165,10 @@ By leveraging libraries such as `pytesseract`, `pyautogui`, and `PyMuPDF`, this 
 
 MIT License
 
+## Author
+
+Charles DeFreese III
+
 ## Contributing
 
 We welcome contributions to improve Screenshot Text Extractor! Here's how you can help:
